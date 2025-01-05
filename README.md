@@ -1,3 +1,12 @@
+# CoreMark for TinyQV
+
+TinyQV on TT06 reported a CoreMark of:
+
+    CoreMark 1.0 : 4.969 / GCC14.2.0 -O2 -march=rv32ec_zcb / STACK
+
+I did have to make changes in order to report this result without float support, but otherwise there are only "legal" changes to the base repo.
+
+Original readme below:
 
 # Introduction
 

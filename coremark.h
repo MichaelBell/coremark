@@ -70,6 +70,10 @@ void       stop_time(void);
 CORE_TICKS get_time(void);
 secs_ret   time_in_secs(CORE_TICKS ticks);
 
+// BEGIN changes to report CoreMark when HAS_FLOAT = 0
+secs_ret   time_in_msecs(CORE_TICKS ticks);
+// END changes
+
 /* Misc useful functions */
 ee_u16 crcu8(ee_u8 data, ee_u16 crc);
 ee_u16 crc16(ee_s16 newval, ee_u16 crc);

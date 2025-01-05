@@ -422,6 +422,31 @@ for (i = 0; i < MULTITHREAD; i++)
 #endif
             ee_printf("\n");
         }
+
+        // BEGIN changes to report CoreMark when HAS_FLOAT = 0
+#else
+        if (known_id == 3)
+        {
+            ee_u32 mark = default_num_contexts * results[0].iterations * 1000000
+                          / time_in_msecs(total_time);
+            ee_printf("CoreMark 1.0 : %d.%03d / %s %s",
+                      mark / 1000,
+                      mark % 1000,
+                      COMPILER_VERSION,
+                      COMPILER_FLAGS);
+#if defined(MEM_LOCATION) && !defined(MEM_LOCATION_UNSPEC)
+            ee_printf(" / %s", MEM_LOCATION);
+#else
+            ee_printf(" / %s", mem_name[MEM_METHOD]);
+#endif
+
+#if (MULTITHREAD > 1)
+            ee_printf(" / %d:%s", default_num_contexts, PARALLEL_METHOD);
+#endif
+            ee_printf("\n");
+        }
+
+        // END changes
 #endif
     }
     if (total_errors > 0)
