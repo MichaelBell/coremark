@@ -70,7 +70,7 @@ Original Author: Shay Gal-on
 #endif
 #ifndef COMPILER_FLAGS
 #define COMPILER_FLAGS \
-    "-Os -march=rv32ec_zcb"
+    "-O2 -march=rv32ec_zcb"
 #endif
 #ifndef MEM_LOCATION
 #define MEM_LOCATION "STACK"
