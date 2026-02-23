@@ -15,7 +15,7 @@ limitations under the License.
 
 Original Author: Shay Gal-on
 */
-#include <csr.h>
+#include <timing.h>
 
 #include "coremark.h"
 #include "core_portme.h"
@@ -46,7 +46,7 @@ volatile ee_s32 seed5_volatile = 0;
 CORETIMETYPE
 barebones_clock()
 {
-    return read_time();
+    return read_cycle();
 }
 /* Define : TIMER_RES_DIVIDER
         Divider to trade off timer resolution and total time that can be
@@ -56,7 +56,7 @@ barebones_clock()
    does not occur. If there are issues with the return value overflowing,
    increase this value.
         */
-#define CLOCKS_PER_SEC             1000000
+#define CLOCKS_PER_SEC             15000000
 #define GETMYTIME(_t)              (*_t = barebones_clock())
 #define MYTIMEDIFF(fin, ini)       ((fin) - (ini))
 #define TIMER_RES_DIVIDER          1
@@ -138,7 +138,7 @@ ee_u32 default_num_contexts = 1;
 void
 portable_init(core_portable *p, int *argc, char *argv[])
 {
-    ee_printf("Starting CoreMark for TinyQV. Iterations %d\n", seed4_volatile);
+    ee_printf("Starting CoreMark for RV4028. Iterations %d\n", seed4_volatile);
 
     (void)argc; // prevent unused warning
     (void)argv; // prevent unused warning
