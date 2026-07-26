@@ -22,7 +22,7 @@ clean:
 	cd $(dir $(PROJECT_NAME)) && rm *.o *.elf *.bin *.hex tinyqv/*.o
 
 %.o: %.c
-	$(CC) -DITERATIONS=0 -DPERFORMANCE_RUN -O2 -I$(TINYQV_SDK) -Itinyqv/ -I. -march=rv32ec_zcb_zicond -mabi=ilp32e -mno-strict-align -nostdlib -nostartfiles -ffreestanding -ffunction-sections -fdata-sections -Wall -Werror -lc -c $< -o $@
+	$(CC) -DITERATIONS=0 -DPERFORMANCE_RUN -O2 -I$(TINYQV_SDK) -Itinyqv/ -I. -march=rv32ec_zcb_zicond_zilsd -mabi=ilp32e -mno-strict-align -nostdlib -nostartfiles -ffreestanding -ffunction-sections -fdata-sections -Wall -Werror -lc -c $< -o $@
 
 %.o: %.s
 	$(AS) -march=rv32ec_zcb -mabi=ilp32e $< -o $@
